@@ -19,22 +19,26 @@ body {
 }
 
 .container {
-    padding: 20px;
+    max-width: 400px;
 }
 
 button {
-    padding: 15px 25px;
-    font-size: 18px;
+    margin-top: 20px;
+    padding: 12px 20px;
+    font-size: 16px;
     border: none;
-    border-radius: 12px;
+    border-radius: 10px;
     background: white;
     color: #ff4d6d;
     cursor: pointer;
-    transition: 0.3s;
 }
 
-button:hover {
-    transform: scale(1.05);
+input {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    width: 80%;
 }
 </style>
 </head>
@@ -42,71 +46,91 @@ button:hover {
 <body>
 
 <div class="container">
-    <h1>🤖 Sistema Ultra Secreto 2.0</h1>
-    <button onclick="iniciar()">Iniciar</button>
+    <h2 id="texto">🤖 Clique para iniciar o sistema</h2>
+    <div id="areaInput"></div>
+    <button onclick="iniciar()" id="botao">Iniciar</button>
 </div>
 
 <script>
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
 
-async function iniciar() {
+let nome = "";
+let etapa = 0;
 
-    alert("🤖 Iniciando Sistema Ultra Secreto 2.0...");
-    await sleep(1000);
+let titulos = [
+    "Patrimônio da Beleza de Caru 🌎",
+    "Bug no Sistema de Tão Incrível 💻",
+    "Rainha Oficial de Carutapera 👑",
+    "Orgulho Cientificamente Comprovado da Cidade ✨"
+];
 
-    let nome = prompt("Usuária detectada. Informe seu nome:");
-    await sleep(1000);
+function iniciar() {
+    const texto = document.getElementById("texto");
+    const areaInput = document.getElementById("areaInput");
+    const botao = document.getElementById("botao");
 
-    alert("Analisando dados biométricos...");
-    await sleep(2000);
-    alert("Escaneando nível de carisma...");
-    await sleep(2000);
-
-    alert("⚠ ERRO CRÍTICO ⚠");
-    await sleep(1000);
-    alert("Nível de charme excede os limites do sistema.");
-    await sleep(2000);
-
-    alert(nome + ", isso é sério.");
-    await sleep(1000);
-    alert("Você foi oficialmente classificada como:");
-    await sleep(2000);
-
-    let titulos = [
-        "Patrimônio da Beleza de Caru 🌎",
-        "Bug no Sistema de Tão Incrível 💻",
-        "Rainha Oficial de Carutapera 👑",
-        "Orgulho Cientificamente Comprovado da Cidade ✨"
-    ];
-
-    let titulo = titulos[Math.floor(Math.random() * titulos.length)];
-
-    alert(titulo);
-    await sleep(2000);
-
-    let humor = prompt("Antes de encerrar, como você está se sentindo hoje?");
-
-    if (humor && humor.toLowerCase() === "triste") {
-        alert("Sistema detectou tentativa de tristeza.");
-        await sleep(1000);
-        alert("Mas isso não combina com alguém tão absurda de especial.");
-    } 
-    else if (humor && humor.toLowerCase() === "feliz") {
-        alert("Confirmado. Sua felicidade está iluminando 3 continentes.");
-    } 
-    else {
-        alert("Estado emocional registrado.");
-        alert("Independentemente disso, você continua incrível.");
+    if (etapa === 0) {
+        texto.innerText = "Usuária detectada. Informe seu nome:";
+        areaInput.innerHTML = "<input id='nomeInput'>";
+        botao.innerText = "Continuar";
+        etapa++;
     }
 
-    await sleep(2000);
+    else if (etapa === 1) {
+        nome = document.getElementById("nomeInput").value;
+        texto.innerText = "Analisando dados biométricos...";
+        areaInput.innerHTML = "";
+        botao.style.display = "none";
 
-    alert("Conclusão final do sistema:");
-    alert(nome + ", Carutapera claramente tem sorte em te ter por aí!");
-    alert("🤖 Programa encerrado antes que essa usuária me quebre kkk s2.");
+        setTimeout(() => {
+            texto.innerText = "⚠ ERRO CRÍTICO ⚠";
+        }, 1500);
+
+        setTimeout(() => {
+            texto.innerText = "Nível de charme excede os limites do sistema.";
+        }, 3000);
+
+        setTimeout(() => {
+            texto.innerText = nome + ", você foi oficialmente classificada como:";
+        }, 4500);
+
+        setTimeout(() => {
+            texto.innerText = titulos[Math.floor(Math.random() * titulos.length)];
+        }, 6000);
+
+        setTimeout(() => {
+            texto.innerText = "Antes de encerrar, como você está se sentindo hoje?";
+            areaInput.innerHTML = "<input id='humorInput'>";
+            botao.style.display = "inline-block";
+        }, 8000);
+
+        etapa++;
+    }
+
+    else if (etapa === 2) {
+        let humor = document.getElementById("humorInput").value.toLowerCase();
+        areaInput.innerHTML = "";
+        botao.style.display = "none";
+
+        if (humor === "triste") {
+            texto.innerText = "Sistema detectou tentativa de tristeza...";
+        } else if (humor === "feliz") {
+            texto.innerText = "Sua felicidade está iluminando 3 continentes.";
+        } else {
+            texto.innerText = "Estado emocional registrado.";
+        }
+
+        setTimeout(() => {
+            texto.innerText = nome + ", Carutapera claramente tem sorte em te ter por aí!";
+        }, 3000);
+
+        setTimeout(() => {
+            texto.innerText = "🤖 Programa encerrado antes que essa usuária me quebre.";
+        }, 6000);
+
+        etapa++;
+    }
 }
+
 </script>
 
 </body>
