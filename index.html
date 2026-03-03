@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sistema Ultra Secreto 2.0</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    color: white;
+}
+
+.container {
+    padding: 20px;
+}
+
+button {
+    padding: 15px 25px;
+    font-size: 18px;
+    border: none;
+    border-radius: 12px;
+    background: white;
+    color: #ff4d6d;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>🤖 Sistema Ultra Secreto 2.0</h1>
+    <button onclick="iniciar()">Iniciar</button>
+</div>
+
+<script>
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function iniciar() {
+
+    alert("🤖 Iniciando Sistema Ultra Secreto 2.0...");
+    await sleep(1000);
+
+    let nome = prompt("Usuária detectada. Informe seu nome:");
+    await sleep(1000);
+
+    alert("Analisando dados biométricos...");
+    await sleep(2000);
+    alert("Escaneando nível de carisma...");
+    await sleep(2000);
+
+    alert("⚠ ERRO CRÍTICO ⚠");
+    await sleep(1000);
+    alert("Nível de charme excede os limites do sistema.");
+    await sleep(2000);
+
+    alert(nome + ", isso é sério.");
+    await sleep(1000);
+    alert("Você foi oficialmente classificada como:");
+    await sleep(2000);
+
+    let titulos = [
+        "Patrimônio da Beleza de Caru 🌎",
+        "Bug no Sistema de Tão Incrível 💻",
+        "Rainha Oficial de Carutapera 👑",
+        "Orgulho Cientificamente Comprovado da Cidade ✨"
+    ];
+
+    let titulo = titulos[Math.floor(Math.random() * titulos.length)];
+
+    alert(titulo);
+    await sleep(2000);
+
+    let humor = prompt("Antes de encerrar, como você está se sentindo hoje?");
+
+    if (humor && humor.toLowerCase() === "triste") {
+        alert("Sistema detectou tentativa de tristeza.");
+        await sleep(1000);
+        alert("Mas isso não combina com alguém tão absurda de especial.");
+    } 
+    else if (humor && humor.toLowerCase() === "feliz") {
+        alert("Confirmado. Sua felicidade está iluminando 3 continentes.");
+    } 
+    else {
+        alert("Estado emocional registrado.");
+        alert("Independentemente disso, você continua incrível.");
+    }
+
+    await sleep(2000);
+
+    alert("Conclusão final do sistema:");
+    alert(nome + ", Carutapera claramente tem sorte em te ter por aí!");
+    alert("🤖 Programa encerrado antes que essa usuária me quebre kkk s2.");
+}
+</script>
+
+</body>
+</html>
